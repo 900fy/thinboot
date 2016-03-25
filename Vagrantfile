@@ -83,8 +83,9 @@ Vagrant.configure(2) do |config|
     # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
     # documentation for more information about their specific syntax and use.
     server.vm.provision "shell", inline: <<-SHELL
+      echo 1 > /proc/sys/net/ipv4/ip_forward
       sudo apt-get update
-      sudo apt-get install -f -y git
+      sudo apt-get install -f -y git ruby puppet
       sudo gem list -i r10k || gem install r10k --no-rdoc --no-ri
       cd /vagrant && r10k -v info puppetfile install 2>&1
     SHELL
@@ -98,9 +99,9 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  (1..3).each do |i|
+  (1..1).each do |i|
     config.vm.define "client#{i}" do |client|
-      client.vm.box = "steigr/pxe"
+      client.vm.box = "clink15/pxe"
       client.vm.network :private_network, :adapter=>1, ip: "192.168.33.#{i+100}", auto_config: false
       client.vm.provider "virtualbox" do |vb|
         # Display the VirtualBox GUI when booting the machine
