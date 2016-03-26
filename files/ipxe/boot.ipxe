@@ -62,6 +62,6 @@ sanboot ${base-iscsi}:client || goto exit
 sanboot ${base-iscsi}:client || goto install
 
 :install
-initrd http://de.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/initrd.gz
-chain http://de.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux auto kbd-chooser/method=de keyboard-configuration/layout=Germany keyboard-configuration/variant=Germany console-setup/ask_detect=false locale=de_DE localechooser/translation/warn-light=true localechooser/translation/warn-severe=true debconf/frontend=noninteractive netcfg/get_hostname=ubuntu-1404 netcfg/get_domain=int.lan url=tftp://192.168.33.11/preseed.cfg fb=false noapci 
+initrd http://en.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/initrd.gz
+chain http://en.archive.ubuntu.com/ubuntu/dists/trusty/main/installer-amd64/current/images/netboot/ubuntu-installer/amd64/linux auto kbd-chooser/method=en keyboard-configuration/layout=us keyboard-configuration/variant=us console-setup/ask_detect=false locale=en_US localechooser/translation/warn-light=true localechooser/translation/warn-severe=true debconf/frontend=noninteractive netcfg/get_hostname=ubuntu-1404 netcfg/get_domain=int.lan url=tftp://192.168.33.11/preseed.cfg fb=false noapci 
 boot
