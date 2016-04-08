@@ -76,6 +76,14 @@ node default {
         require => Package['tgt'],
         notify => Service['tgt'],
     }
+    file {'/etc/iscsi/iscsid.conf':
+        mode    => 644,
+        owner   => root,
+        group   => root,
+        source  => 'puppet:///modules/thinboot/iscsid.conf',
+        require => Package['tgt'],
+        notify => Service['tgt'],
+    }
     service { 'tgt':
         ensure  => 'running',
         enable  => 'true',
